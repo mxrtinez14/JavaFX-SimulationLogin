@@ -57,4 +57,11 @@ public class Usuario {
         this.rol = rol;
     }
 
+    class Animal {
+
+        void sonido() {
+            System.out.println("Sonido de animal");
+        }
+    }
+
 }

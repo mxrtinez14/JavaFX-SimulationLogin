@@ -24,7 +24,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Paint;
+import javafx.scene.paint.Stop;
 
 public class LoginView extends BorderPane {
 
@@ -43,8 +45,13 @@ public class LoginView extends BorderPane {
     private GridPane formulario;
     private Button btnIniciarSesion;
     private VBox cajaVertical;
+    
+    private final String RUTA_ESTILOS = "/com/diegomartinez/styles/";
+    
 
     private LoginView() {
+        
+        this.getStylesheets().add(RUTA_ESTILOS + "LoginStyles.css");
 
         this.setPadding(new Insets(20));
 
@@ -57,10 +64,20 @@ public class LoginView extends BorderPane {
 
         //Colocar fondo con objetos
         this.setBackground(new Background(
-                new BackgroundFill(Paint.valueOf("#61B8BD"),
-                        new CornerRadii(25),
-                        Insets.EMPTY)
-        ));
+        new BackgroundFill(
+                new LinearGradient(
+                        0, 1,
+                        1, 0,
+                        true,
+                        null,
+                        new Stop(0.16, Color.web("#0f678a")),
+                        new Stop(0.64, Color.web("#62a87a")),
+                        new Stop(1, Color.web("#26251d"))
+                ),
+                new CornerRadii(25),
+                Insets.EMPTY
+        )
+));
 
         barraDeVentana = new HBox(20);
         btnCerrarVentana = new Button("X");
@@ -86,8 +103,8 @@ public class LoginView extends BorderPane {
         
         imgLogoLogin = new ImageView(new ImageController().getImageLogin("logo"));
         
-        imgLogoLogin.setFitHeight(100);
-        imgLogoLogin.setFitWidth(100);
+        imgLogoLogin.setFitHeight(200);
+        imgLogoLogin.setFitWidth(200);
         imgLogoLogin.setCache(true);
         
         cajaVertical.setAlignment(Pos.CENTER);

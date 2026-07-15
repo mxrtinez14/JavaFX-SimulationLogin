@@ -4,10 +4,18 @@
  */
 package com.diegomartinez.view;
 
+import javafx.scene.layout.VBox;
+
 /**
  *
  * @author informatica
  */
-public class BienvenidaView {
-    
+public class BienvenidaView extends VBox {
+
+    private static BienvenidaView instanciaBienvenidaView;
+
+    public BienvenidaView() {
+
+    }
+
 }

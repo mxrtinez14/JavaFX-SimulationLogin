@@ -1,0 +1,40 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 14 jul 2026, 07:36:18
+    Author     : informatica
+*/
+
+TextField.error{
+    -fx-border-color: red;
+    -fx-border-width: 2px;
+    
+}
+
+PasswordField.error{
+    
+    -fx-border-color: red;
+    -fx-border-width: 2px;
+}
+
+TextField.empty{
+    -fx-border-color: orange;
+    -fx-border-width: 2px;
+}
+
+PasswordField.empty{
+    
+    -fx-border-color: red;
+    -fx-border-width: 2px;
+}
+
+#login {
+    -fx-background-color: linear-gradient(
+        from 0% 100% to 100% 0%,
+        #0f678a 16%,
+        #62a87a 64%,
+        #26251d 100%
+    );
+}
