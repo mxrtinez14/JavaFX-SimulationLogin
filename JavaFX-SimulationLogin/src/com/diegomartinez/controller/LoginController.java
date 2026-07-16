@@ -4,6 +4,7 @@
  */
 package com.diegomartinez.controller;
 
+import com.diegomartinez.view.LoginView;
 import com.diegomartinez.model.Usuario;
 import com.diegomartinez.view.LoginView;
 import javafx.stage.Stage;
@@ -18,20 +19,20 @@ public class LoginController {
     private final LoginView LOGIN_VIEW;
     private double ejeX = 0;
     private double ejeY = 0;
-
     private Stage escenario = SceneManager.getInstanciaSceneManager().getEscenarioPrincipal();
 
     public LoginController(LoginView loginView) {
         this.LOGIN_VIEW = loginView;
-        contruirAcciones();
+        construirAcciones();
     }
 
-    public void contruirAcciones() {
+    public void construirAcciones() {
         this.LOGIN_VIEW.getBtnCerrarVentana().setOnMouseClicked(
                 (evento) -> {
                     System.exit(0);
                 }
         );
+
         this.LOGIN_VIEW.setOnMouseClicked(
                 (evento) -> {
                     ejeX = evento.getSceneX();
@@ -40,14 +41,14 @@ public class LoginController {
                     System.out.println("Y " + ejeY);
                 }
         );
+
         this.LOGIN_VIEW.setOnMouseDragged(
                 (evento) -> {
                     double ejeXVentanaDesplazamiento = evento.getScreenX();
                     double ejeYVentanaDesplazamiento = evento.getScreenY();
 
                     System.out.println("Desplazamiento total X " + (ejeXVentanaDesplazamiento - ejeX));
-                    System.out.println("Desplazamiento total Y" + (ejeYVentanaDesplazamiento - ejeY));
-
+                    System.out.println("Desplazamiento total Y " + (ejeYVentanaDesplazamiento - ejeY));
                     escenario.setX(ejeXVentanaDesplazamiento - ejeX);
                     escenario.setY(ejeYVentanaDesplazamiento - ejeY);
                 }
@@ -65,24 +66,23 @@ public class LoginController {
     public void iniciarSesion() {
         String nombreUsuario = this.LOGIN_VIEW.getTxtNombreUsuario().getText().trim();
         String clave = this.LOGIN_VIEW.getPwdClave().getText().trim();
+
         if (nombreUsuario.isEmpty()) {
-            JOptionPane.showMessageDialog(null,
-                    "NO DEJE EL CAMPO NOMBRE USUARIO VACIO");
             this.LOGIN_VIEW.getTxtNombreUsuario().getStyleClass().add("empty");
+            JOptionPane.showMessageDialog(null, "NO DEJE EL CAMPO DE USUARIO VACIO");
         } else if (clave.isEmpty()) {
             this.LOGIN_VIEW.getTxtNombreUsuario().getStyleClass().remove("empty");
             this.LOGIN_VIEW.getPwdClave().getStyleClass().add("empty");
-            JOptionPane.showMessageDialog(null,
-                    "NO DEJE EL CAMPO CONTRASEÑA VACIA");
+            JOptionPane.showMessageDialog(null, "NO DEJE EL CAMPO DE CONTRASEÑA VACIO");
         } else {
             this.LOGIN_VIEW.getPwdClave().getStyleClass().remove("empty");
             Usuario usuario = authSistema.login(nombreUsuario, clave);
             if (usuario == null) {
                 JOptionPane.showMessageDialog(null, "VALIDE SUS CREDENCIALES");
             } else {
-                JOptionPane.showMessageDialog(null, "BIenvenido");
+                SceneManager.getInstanciaSceneManager().ventanaBienvenida(usuario.getNombreCompleto());
             }
-
         }
     }
+
 }
