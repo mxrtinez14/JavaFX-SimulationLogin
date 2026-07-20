@@ -23,10 +23,10 @@ public class ImageController {
         
         switch (nombreImagen){
             case "logo":
-                imagenAMostrar = new Image(RUTA_IMAGENES+"masha-img.jpg");
+                imagenAMostrar = new Image(RUTA_IMAGENES+"login-logo.png");
                 break;
             default:
-                imagenAMostrar = new Image(RUTA_IMAGENES+"masha-img.jpg");
+                imagenAMostrar = new Image(RUTA_IMAGENES+"login-logo.png");
         }
         return imagenAMostrar;
         

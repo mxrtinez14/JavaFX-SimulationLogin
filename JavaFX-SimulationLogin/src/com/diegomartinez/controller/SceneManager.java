@@ -35,7 +35,7 @@ public class SceneManager {
             JOptionPane.showMessageDialog(null, "Error de objeto nulo: Cambiar Escena Principal");
             objetivoNulo . printStackTrace(); //Imprime todo el camino hacia el error
         }catch (Exception errorPadre){
-            JOptionPane.showMessageDialog(null, "Error padre: Cmabiar Escena Principal");
+            JOptionPane.showMessageDialog(null, "Error padre: Cambiar Escena Principal");
             errorPadre . printStackTrace();
         }
     }
@@ -60,6 +60,7 @@ public class SceneManager {
     
     public void ventanaBienvenida(String nombreCompleto){
         try{
+            
             escenarioSecundaria = new Stage();
             this.escenarioSecundaria.initStyle(StageStyle.TRANSPARENT);
             this.escenarioSecundaria.initModality(Modality.APPLICATION_MODAL);
@@ -114,8 +115,5 @@ public class SceneManager {
     public void setEscenaPrincipal(Scene escenaPrincipal) {
         this.escenaPrincipal = escenaPrincipal;
     }
-    
-    
-    
     
 }

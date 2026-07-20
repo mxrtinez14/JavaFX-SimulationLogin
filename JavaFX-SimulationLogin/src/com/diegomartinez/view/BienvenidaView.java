@@ -26,6 +26,7 @@ public class BienvenidaView extends VBox {
     private static BienvenidaView instanciaBienvenidaView;
     private ImageView imgLogoLogin;
     private Label lblBienvenida;
+    private Label lblMensaje;
     private Button btnCerrarVentanaSesion;
     private final String RUTA_ESTILIOS = "/com/diegomartinez/styles/";
     
@@ -44,20 +45,31 @@ public class BienvenidaView extends VBox {
         ));
         
         lblBienvenida = new Label("¡Bienvenido " + nombreCompleto + "!");
+        lblMensaje = new Label( "Bienvenido " + nombreCompleto);
+        lblMensaje.setId("lblNombre");
+        
+        btnCerrarVentanaSesion = new Button("Cerrar Sesion");
+        btnCerrarVentanaSesion.setId("btnCerrar");
+        
+        this.setId("panelBienvenida");
         
         imgLogoLogin = new ImageView( new ImageController().getImageLogin("logo") );
-        imgLogoLogin.setFitHeight(100);
-        imgLogoLogin.setFitWidth(100);
-        imgLogoLogin.setCache(true);
+        imgLogoLogin.setFitHeight(120);
+        imgLogoLogin.setFitWidth(120);
+        imgLogoLogin.setPreserveRatio(true);
+        imgLogoLogin.setSmooth(true);
         
         btnCerrarVentanaSesion = new Button("Cerrar");
         
         this.getChildren().addAll(
                 lblBienvenida,
                 imgLogoLogin,
+                lblMensaje,
                 btnCerrarVentanaSesion
         );
     }
+    
+    
 
     public static void setInstanciaBienvenidaView(BienvenidaView instanciaBienvenidaView) {
         BienvenidaView.instanciaBienvenidaView = instanciaBienvenidaView;

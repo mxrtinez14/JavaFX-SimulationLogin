@@ -81,6 +81,7 @@ public class LoginController {
                 JOptionPane.showMessageDialog(null, "VALIDE SUS CREDENCIALES");
             } else {
                 SceneManager.getInstanciaSceneManager().ventanaBienvenida(usuario.getNombreCompleto());
+                
             }
         }
     }
